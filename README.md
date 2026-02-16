@@ -192,6 +192,54 @@ Now we're starting to see some content! But the ratings also don't look that goo
 nx generate @nx/react:application store --directory=apps/store # or `nx g app store --directory=apps/store`
 ```
 ## Lab 3:
+
+
+## 🏋️‍♀️ Steps:
+
+1. Build the app
+
+   <details>
+   <summary>🐳 &nbsp;&nbsp;Hint</summary>
+   <img src="./assets/lab3_build_cmds.png" alt="Nx executor command structure">
+   </details><br />
+
+2. You should now have a `dist` folder - let's open it up!
+
+   - This is your whole app's output! If we wanted we could push this now to a server and it would all work.
+   - Notice how we generated a `3rdpartylicenses.txt` file and how all files have hashes in suffix
+   - Open one of the files, for example `main.{hash}.js` and look at it's contents. Notice how it's minified.
+     <br />
+
+3. **Open up `apps/store/project.json`** and look at the object under `targets/build`
+
+   - this is the **target**, and it has an **executor** option, that points to `@nx/webpack:webpack`
+   - Remember how we copied some images into our `/assets` folder earlier? Look through the executor options and try to find how it knows to include them in the final build!
+     <br />
+
+4. Send a flag to the executor so that it builds for development
+
+   <details>
+   <summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+   `--configuration=development`
+
+   </details><br />
+
+5. Open up the `dist` folder again - notice how the `3rdpartylicenses.txt` file is gone, as per the "development" configuration in `project.json`. Also notice how filenames no longer have hashed suffixes. Open one of the files, for example `main.{hash}.js`. Notice how its content is now fully readable and there are sourcemaps attached to each of the compiled files.
+   <br />
+
+6. The **serve** target (located a bit lower in `project.json`) also contains a executor, that _uses_ the output from the **build** target
+   <br />
+
+
+---
+##### To build the app for production:
+
+`nx build store`
+
+##### To build the app for development:
+
+`nx build store --configuration=development`
 ## Lab 4:
 ## Lab 5:
 ## Lab 6:
