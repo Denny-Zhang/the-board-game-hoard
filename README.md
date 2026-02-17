@@ -471,7 +471,45 @@ The result is still pretty simple though. Our route just displays the ID of the 
 ```bash
 nx generate @nx/react:library store-feature-game-detail --directory=libs/store/feature-game-detail --appProject=store
 ```
-## Lab 7:
+## 💻 Lab 7 - Add an Express API
+
+Up until now we've had a single app in our repository, and a few other libs that it uses.
+
+But remember how we created that `fake-api` way back in the second lab, that only our `store` app can access?
+
+Our new routed component suddenly needs access to the games as well, so in this lab we'll be adding a completely new app, this time on the backend, as an API. And we'll use the `@nx/express` plugin to easily generate everything we need.
+
+All the Express specific code for serving the games is provided in the solution.
+
+### 🏋️‍♀️ Steps:
+
+1. Stop any running `nx serve` instance
+   <br/>
+
+2. `yarn add @nx/express` or `npm i -S @nx/express`
+   <br/>
+
+3. Generate a new Express app, called `api`
+
+   ⚠️&nbsp;&nbsp;Make sure you instruct the generator to configure a proxy from the frontend `store` to the new `api` service (use `--help` to see the available options)<br />
+
+4. Copy the code from the `fake api` to a new file called `apps/api/src/app/`[games.repository.ts](https://github.com/nrwl/nx-react-workshop/blob/main/examples/lab7/apps/api/src/app/games.repository.ts)
+   <br/>
+
+5. Update the Express [main.ts](https://github.com/nrwl/nx-react-workshop/blob/main/examples/lab7/apps/api/src/main.ts) to use the repository data
+   <br/>
+
+6. Let's now inspect the dependency graph!
+   <br/>
+
+7. Inspect what changed from the last time you committed, then commit your changes
+   <br/>
+
+---
+##### Generate a new Express API app, and configure the proxy to the `store` project
+
+`nx generate @nx/express:application api --directory=apps/store/api --frontendProject=store`
+
 ## Lab 8:
 ## Lab 9:
 ## Lab 10:
