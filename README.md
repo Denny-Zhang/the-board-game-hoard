@@ -508,7 +508,15 @@ All the Express specific code for serving the games is provided in the solution.
 ---
 ##### Generate a new Express API app, and configure the proxy to the `store` project
 
-`nx generate @nx/express:application api --directory=apps/store/api --frontendProject=store`
+(see [frontendProject](https://nx.dev/docs/technologies/node/guides/application-proxies) for prior to Nx version 18)
+
+`nx generate @nx/express:application api --directory=apps/store/api --frontendProject=store` (old command)
+
+- Should use `apps/api` as directory)
+- Set proxy manually in Wepack/Vite
+
+##### using
+`nx generate @nx/express:application api --directory=apps/api`
 
 ## Lab 8:
 ## Lab 9:
