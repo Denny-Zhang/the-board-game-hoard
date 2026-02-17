@@ -103,7 +103,7 @@ And join the Nx community:
 
 # The Board Game Hoard
 
-## Lab 1:
+## 💻 Lab 1 - generate an empty workspace
 
 ### 🏋️‍♀️ Steps:
 1. Generate an empty Nx workspace for a fictional company called "The Board Game Hoard"
@@ -123,7 +123,7 @@ npx create-nx-workspace bg-hoard --preset=apps --nx-cloud=skip
 ```
 
 
-## Lab 2:
+## 💻 Lab 2 - Generate a React app
 
 ### 🏋️‍♀️ Steps:
 
@@ -191,10 +191,10 @@ Now we're starting to see some content! But the ratings also don't look that goo
 ```shell
 nx generate @nx/react:application store --directory=apps/store # or `nx g app store --directory=apps/store`
 ```
-## Lab 3:
 
+## 💻 Lab 3 - Executors
 
-## 🏋️‍♀️ Steps:
+### 🏋️‍♀️ Steps:
 
 1. Build the app
 
@@ -240,7 +240,116 @@ nx generate @nx/react:application store --directory=apps/store # or `nx g app st
 ##### To build the app for development:
 
 `nx build store --configuration=development`
-## Lab 4:
+
+## 🚂 Lab 3.1 - Migrations
+
+### 🏋️‍♀️ Steps:
+
+1. Install an old version of the `@nrwl/nx-react-workshop` npm package: `yarn add -D @nrwl/nx-react-workshop@0.0.1`
+2. Make sure you've committed all your changes to this point: `git commit -am "lab 3"`
+3. Migrate to the latest version of `@nrwl/nx-react-workshop`
+
+   <details>
+   <summary>🐳 Hint</summary>
+
+   `nx migrate @nrwl/nx-react-workshop@latest`
+
+   </details>
+   <br />
+
+4. Look at the `migrations.json` file. It contains the generators to complete every lab in the workshop. We don't want to run everything, so let's delete every migration entry except for labs 1 through 3.
+5. The `migrations.json` file should now only contain generators for the first 3 labs. Let's run those migrations: `nx migrate --run-migrations`.
+6. There's also a generator that comes with `@nrwl/nx-react-workshop` to help you set up the `migrations.json` file to complete a specific lab or to complete a range of labs in option 1 or option 2. Experiment with the `complete-labs` generator so that later on you can catch up if you get stuck on a lab. `nx g @nrwl/nx-react-workshop:complete-labs --help`
+
+
+## 💻 Lab 4 - Generate a component lib
+
+Let's add a header to our app! Because headers can be shared with other components, we will create a common lib that others can import as well.
+
+<details>
+  <summary>App Screenshot</summary>
+  <img src="./assets/lab4_screenshot.png" width="500" alt="screenshot of lab4 result">
+</details>
+
+### 🏋️‍♀️ Steps:
+
+1.  Stop the `nx serve`
+    <br />
+
+2.  Generate a new empty React library called `store-ui-shared` in the `libs/store/ui-shared` folder. When asked, choose `jest` as test runner, the `rollup` as a bundler and `as-provided` naming convention.
+
+    <details>
+    <summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+    - it's a generator! you've used it before in the second lab, but instead of an `app`, we now want to generate a `lib`
+    - use the `--help` command to figure out how to generate it in a **directory** and that it doesn’t create default component
+
+    </details><br />
+
+3.  Generate a new React component, called `header`, inside the `src/lib` folder of the library you just created
+
+    ⚠️&nbsp;&nbsp;Play around with the generator options so that the generated component is automatically **exported** from the lib's module
+
+    <details><summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+    use `--help` to figure out how to specify under which **project** you want to generate the new component and how to automatically have it **exported** and skip the component generation
+
+    </details><br />
+
+4.  Replace the `header` component's [code](https://github.com/nrwl/nx-react-workshop/blob/main/examples/lab4/libs/store/ui-shared/src/lib/header/header.tsx)
+    <br />
+
+5.  Let's use the new shared header component we created
+
+    - Add your new component to `apps/store/src/app/app.tsx`
+
+    <details><summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+    ```typescript
+    import { Header } from '@bg-hoard/store-ui-shared';
+    ```
+
+    ```html
+    <Header title="Board Game Hoard" />
+    <!-- right at the top - above our container -->
+    <div className="{styles['container']}"></div>
+    ```
+
+    Wrap the App component in a fragment (`<>` and `</>`)
+
+    </details>
+
+    ⚠️&nbsp;&nbsp;You might need to restart the TS compiler in your editor (`CTRL+SHIFT+P` in VSCode and search for `Restart Typescript`)
+    <br />
+
+6.  Serve the project and test the changes
+    <br />
+
+7.  Run the command to inspect the dependency graph - What do you see? (Remember to "Show all projects" in left sidebar)
+     <details>
+     <summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+    ```bash
+    nx graph
+    ```
+
+     </details><br />
+
+8.  Inspect what changed from the last time you committed, then commit your changes
+    <br />
+
+---
+#### Generate a new lib:
+
+```bash
+nx generate @nx/react:lib store-ui-shared --directory=libs/store/ui-shared --no-component
+```
+
+#### Generate a new component in a project:
+(Should be excuted in "libs/store/ui-shared/src/lib/" of project root "ui-share")
+```bash
+nx generate @nx/react:component header --export --directory=libs/store/ui-shared/src/lib/header
+```
 ## Lab 5:
 ## Lab 6:
 ## Lab 7:
