@@ -350,7 +350,56 @@ nx generate @nx/react:lib store-ui-shared --directory=libs/store/ui-shared --no-
 ```bash
 nx generate @nx/react:component header --export --directory=libs/store/ui-shared/src/lib/header
 ```
-## Lab 5:
+## 💻 Lab 5 - Generate a utility lib
+
+
+<details>
+  <summary>App Screenshot</summary>
+  <img src="./assets/lab5_screenshot.png" width="500" alt="screenshot of lab5 result">
+</details>
+
+### 🏋️‍♀️ Steps:
+
+1. Stop the `nx serve`
+   <br/>
+
+2. Use the `@nx/js` package to generate another lib in the `libs/store` folder - let's call it `util-formatters`.
+   <br/>
+
+3. Add the [code for the utility function](https://github.com/nrwl/nx-react-workshop/blob/main/examples/lab5/libs/store/util-formatters/src/lib/store-util-formatters.ts) to the new library you just created `libs/store/util-formatters/src/lib/store-util-formatters.ts`
+   <br/>
+
+4. Use it in your frontend project to format the rating for each game
+
+    <details>
+    <summary>🐳 &nbsp;&nbsp;Hint</summary>
+
+   `app.tsx`:
+
+   ```ts
+   import { formatRating } from '@bg-hoard/store-util-formatters';
+   ```
+
+   ```html
+   <strong>Rating:</strong> {formatRating(x.rating)}
+   ```
+
+    </details><br />
+
+5. Serve the store app - notice how the ratings are formatted.
+   <br/>
+
+6. Launch the dependency graph - notice how the app depends on two libs now.
+   <br/>
+
+7. Inspect what changed from the last time you committed, then commit your changes
+   <br/>
+---
+##### Generate a framework agnostic lib
+
+```bash
+nx generate @nx/js:lib store-util-formatters --directory=libs/store/util-formatters
+```
 ## Lab 6:
 ## Lab 7:
 ## Lab 8:
