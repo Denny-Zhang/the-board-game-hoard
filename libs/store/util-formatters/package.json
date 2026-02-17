@@ -1,0 +1,8 @@
+{
+  "name": "@bg-hoard/util-formatters",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./index.cjs",
+  "module": "./index.js",
+  "dependencies": {}
+}
