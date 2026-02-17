@@ -724,7 +724,7 @@ nx generate @nx/js:lib api-util-interface --directory=libs/api/util-interface
 ```
 
 ##### Use the `move` generator to move a nested lib to root
-
+(You can customized the folder structure eg. `shared/util-interface`)
 ```shell
 nx generate @nx/workspace:move --projectName=api-util-interface util-interface
 ```
