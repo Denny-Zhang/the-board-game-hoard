@@ -1,7 +1,7 @@
 {
   "name": "util-interface",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/api/util-interface/src",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "util-interface/src",
   "projectType": "library",
   "tags": [],
   "// targets": "to see all targets run: nx show project util-interface --web",

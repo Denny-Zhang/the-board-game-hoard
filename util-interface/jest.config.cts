@@ -20,11 +20,11 @@ if (swcJestConfig.swcrc === undefined) {
 
 module.exports = {
   displayName: 'util-interface',
-  preset: '../../../jest.preset.js',
+  preset: '../jest.preset.js',
   transform: {
     '^.+\\.[tj]s$': ['@swc/jest', swcJestConfig],
   },
   moduleFileExtensions: ['ts', 'js', 'html'],
   testEnvironment: 'node',
-  coverageDirectory: '../../../coverage/libs/api/util-interface',
+  coverageDirectory: '../coverage/util-interface',
 };
