@@ -1,0 +1,9 @@
+{
+  "name": "feature-game-detail",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/store/feature-game-detail/src",
+  "projectType": "library",
+  "tags": [],
+  "// targets": "to see all targets run: nx show project feature-game-detail --web",
+  "targets": {}
+}
