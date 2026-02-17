@@ -10,13 +10,14 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import { formatRating } from '@bg-hoard/util-formatters';
+import { Game } from '@bg-hoard/util-interface';
 
 /* eslint-disable-next-line */
 export interface StoreFeatureGameDetailProps {}
 
 export function StoreFeatureGameDetail(props: StoreFeatureGameDetailProps) {
   const [state, setState] = useState<{
-    data: any;
+    data: Partial<Game>;
     loadingState: 'success' | 'error' | 'loading';
   }>({
     data: {},

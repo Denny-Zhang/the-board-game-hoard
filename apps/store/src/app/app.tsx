@@ -11,10 +11,11 @@ import styles from './app.module.scss';
 import { Header } from '@bg-hoard/ui-shared';
 import { formatRating } from '@bg-hoard/util-formatters';
 import { StoreFeatureGameDetail } from '@bg-hoard/feature-game-detail';
+import { Game } from '@bg-hoard/util-interface';
 
 export const App = () => {
   const [state, setState] = useState<{
-    data: any[];
+    data: Game[];
     loadingState: 'success' | 'error' | 'loading';
   }>({
     data: [],
